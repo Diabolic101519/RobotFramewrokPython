@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from pathlib import Path
 
 from robot.api.deco import keyword, library
@@ -86,7 +87,8 @@ class LoginKeywords:
             raise RuntimeError("The login browser is not open")
         output_dir = Path("Screenshot")
         output_dir.mkdir(parents=True, exist_ok=True)
-        driver.save_screenshot(str(output_dir / f"{name}.png"))
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%p")
+        driver.save_screenshot(str(output_dir / f"{name}_{timestamp}.png"))
 
     @keyword("Close Login Browser")
     def close_login_browser(self):
