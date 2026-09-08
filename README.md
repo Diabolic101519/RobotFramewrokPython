@@ -5,7 +5,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 ## Project Structure
 
 - `login_test.robot` - Robot Framework test suite and user-facing keywords.
-- `test_sample.py` - Pytest sample scenarios covering arithmetic, string concatenation, and list operations.
+- `test_sample.py` - Pytest coverage for scenario-based screenshot naming, cleanup, and retention without opening a browser.
 - `Locators.py` - External Robot Framework variable file containing label-based login page locators.
 - `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers and screenshot support.
 - `.venv/` - Workspace Python virtual environment containing the test dependencies.
@@ -59,6 +59,7 @@ python -m pytest test_sample.py
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
 The suite contains 3 scenarios. The successful-login scenario is skipped during a real run until valid GitHub credentials are configured. The unsuccessful-login scenario can optionally continue into Google authentication, and the dedicated Google scenario runs the email, `Next`, password, and `Next` steps.
+The pytest screenshot checks cover sanitized scenario names, timestamped filenames, same-scenario replacement, preservation of other scenarios, and removal of numbered Selenium screenshots.
 
 ## Configuration
 
