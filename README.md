@@ -77,7 +77,7 @@ The current suite uses Edge and contains example credentials. Replace them befor
 The successful and unsuccessful login tests capture screenshots with:
 
 ```robot
-Capture Login Screenshot    ${TEST NAME}
+Capture Screenshot    ${TEST NAME}
 ```
 
 Robot Framework passes the current scenario name to the screenshot keyword. Spaces and unsafe filename characters are replaced with hyphens, and a date and time suffix is added. Examples:

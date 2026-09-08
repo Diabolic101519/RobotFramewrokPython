@@ -81,7 +81,7 @@ class LoginKeywords:
         self._wait_for(error_selector)
 
 
-    @keyword("Capture Login Screenshot")
+    @keyword("Capture Screenshot")
     def capture_login_screenshot(self, name: str = "login-failure"):
         driver = self.driver or self.selenium_library.driver
         if driver is None:

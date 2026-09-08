@@ -21,7 +21,7 @@ Successful Login Scenario
     Skip    Configure valid GitHub credentials before running the successful-login scenario.
     Submit Credentials    ${USERNAME}    ${PASSWORD}
     Successful Login Should Be Confirmed
-    Capture Login Screenshot    ${TEST NAME}
+    Capture Screenshot    ${TEST NAME}
 
 Unsuccessful Login Scenario
     [Documentation]    Test that invalid credentials show an error and do not log the user in.
@@ -31,7 +31,7 @@ Unsuccessful Login Scenario
     Wait Until Page Contains Element    ${LOGIN_PAGE_USERNAME_FIELD}    timeout=20s
     Submit Credentials    ${USERNAME}    ${WRONG_PASSWORD}
     Unsuccessful Login Should Be Confirmed
-    Capture Login Screenshot    ${TEST NAME}
+    Capture Screenshot    ${TEST NAME}
     Ask To Continue With Google
 
 Continue With Google Scenario
