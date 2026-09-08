@@ -5,7 +5,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 ## Project Structure
 
 - `login_test.robot` - Robot Framework test suite and user-facing keywords.
-- `LoginPageLocators.py` - External Robot Framework variable file containing label-based login page locators.
+- `Locators.py` - External Robot Framework variable file containing label-based login page locators.
 - `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers and screenshot support.
 - `Screenshot/` - Generated screenshots. The directory is created automatically when a screenshot is captured.
 - `log.html`, `report.html`, `output.xml` - Robot Framework execution artifacts.
@@ -56,7 +56,7 @@ Update the variables in `login_test.robot` for the target application and test d
 - `${BROWSER}` - `chrome`, `firefox`, or `edge`.
 - `${USERNAME}` and `${PASSWORD}` - Credentials for the success scenario.
 - `${WRONG_PASSWORD}` - Invalid password for the failure scenario.
-Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `LoginPageLocators.py`.
+Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `Locators.py`.
 
 The current suite uses Edge and contains example credentials. Replace them before using the repository for real testing. Prefer environment variables or a secrets manager instead of committing credentials to source control.
 
@@ -68,13 +68,13 @@ The unsuccessful login test captures a screenshot with:
 Capture Login Screenshot    unsuccessful-login
 ```
 
-The image is saved as:
+The image is saved with a date and time suffix, for example:
 
 ```text
-Screenshot/unsuccessful-login.png
+Screenshot/unsuccessful-login_2026-09-09_14-30-05-PM.png
 ```
 
-`LoginPage.py` also captures `Screenshot/login-failure.png` automatically when one of its custom waits times out.
+`LoginPage.py` also captures a timestamped `Screenshot/login-failure_*.png` automatically when one of its custom waits times out.
 
 ## Interactive Test Step
 
