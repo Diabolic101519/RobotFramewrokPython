@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-09-09T04:35:06.071154" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-09-09T04:42:38.800333" rpa="false" schemaversion="5">
 <suite id="s1" name="Login Test" source="C:\Users\Administrator\Documents\GitHub\RobotFramewrokPython\login_test.robot">
 <test id="s1-t1" name="Successful Login Scenario" line="17">
 <kw name="Open Browser To Login Page" type="SETUP">
@@ -7,52 +7,52 @@
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.320776" elapsed="0.000552"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.391297" elapsed="0.000734"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.323275" elapsed="0.000556"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.392980" elapsed="0.000296"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.324750" elapsed="0.000752"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.393921" elapsed="0.000755"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.312694" elapsed="0.014598"/>
+<status status="PASS" start="2026-09-09T04:42:43.386924" elapsed="0.008222"/>
 </kw>
 <kw name="Skip" owner="BuiltIn">
 <arg>Configure valid GitHub credentials before running the successful-login scenario.</arg>
 <doc>Skips the rest of the current test.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.330561" elapsed="0.001162"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.420423" elapsed="0.003554"/>
 </kw>
 <kw name="Submit Credentials">
 <kw name="Input Text" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>${user}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.345382" elapsed="0.003289"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.504925" elapsed="0.000687"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_PASSWORD_FIELD}</arg>
 <arg>${pass}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.353270" elapsed="0.001952"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.509336" elapsed="0.002114"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.356097" elapsed="0.000716"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.512627" elapsed="0.000954"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.357523" elapsed="0.000379"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.515736" elapsed="0.000424"/>
 </kw>
 <arg>${USERNAME}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-09-09T04:35:10.340862" elapsed="0.017401"/>
+<status status="PASS" start="2026-09-09T04:42:43.503332" elapsed="0.013907"/>
 </kw>
 <kw name="Successful Login Should Be Confirmed">
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
@@ -60,45 +60,45 @@
 <arg>${LOGIN_PAGE_ERROR}</arg>
 <arg>timeout=10s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.380738" elapsed="0.000641"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.583306" elapsed="0.000690"/>
 </kw>
 <var>${login_failed}</var>
 <arg>Wait Until Page Contains</arg>
 <arg>${LOGIN_PAGE_ERROR}</arg>
 <arg>timeout=10s</arg>
 <doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.374253" elapsed="0.007470"/>
+<status status="PASS" start="2026-09-09T04:42:43.580831" elapsed="0.003535"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Fail" owner="BuiltIn">
 <arg>Login failed: invalid username or password</arg>
 <doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.388168" elapsed="0.018704"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.587475" elapsed="0.002927"/>
 </kw>
 <arg>${login_failed}</arg>
 <arg>Fail</arg>
 <arg>Login failed: invalid username or password</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.383420" elapsed="0.023811"/>
+<status status="PASS" start="2026-09-09T04:42:43.585119" elapsed="0.005862"/>
 </kw>
 <kw name="Wait Until Location Does Not Contain" owner="SeleniumLibrary">
 <arg>/login</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the current URL does not contains ``location``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.407989" elapsed="0.002987"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.591810" elapsed="0.007676"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.361076" elapsed="0.050470"/>
+<status status="PASS" start="2026-09-09T04:42:43.579574" elapsed="0.020381"/>
 </kw>
 <kw name="Capture Login Screenshot" owner="LoginPage">
-<arg>successful-login</arg>
-<status status="NOT RUN" start="2026-09-09T04:35:10.449875" elapsed="0.001915"/>
+<arg>${TEST NAME}</arg>
+<status status="NOT RUN" start="2026-09-09T04:42:43.681192" elapsed="0.000410"/>
 </kw>
 <kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.460671" elapsed="0.001775"/>
+<status status="NOT RUN" start="2026-09-09T04:42:43.710222" elapsed="0.000458"/>
 </kw>
 <doc>Test that opens the browser, logs in, and verifies success.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.305815" elapsed="0.166690"/>
+<status status="PASS" start="2026-09-09T04:42:43.380682" elapsed="0.377075"/>
 </test>
 <test id="s1-t2" name="Unsuccessful Login Scenario" line="26">
 <kw name="Open Browser To Login Page" type="SETUP">
@@ -106,132 +106,132 @@
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.573314" elapsed="0.005027"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.027153" elapsed="0.000464"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.581486" elapsed="0.001577"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.028380" elapsed="0.000301"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.583961" elapsed="0.000705"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.029326" elapsed="0.000679"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.572051" elapsed="0.013015"/>
+<status status="PASS" start="2026-09-09T04:42:44.025620" elapsed="0.004846"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.604844" elapsed="0.000362"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.105863" elapsed="0.000751"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.634564" elapsed="0.002898"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.166933" elapsed="0.000803"/>
 </kw>
 <kw name="Submit Credentials">
 <kw name="Input Text" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>${user}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.684077" elapsed="0.000561"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.230624" elapsed="0.000481"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_PASSWORD_FIELD}</arg>
 <arg>${pass}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.686915" elapsed="0.001038"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.231861" elapsed="0.000434"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.689031" elapsed="0.002184"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.233056" elapsed="0.001024"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.692377" elapsed="0.000416"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.235270" elapsed="0.000372"/>
 </kw>
 <arg>${USERNAME}</arg>
 <arg>${WRONG_PASSWORD}</arg>
-<status status="PASS" start="2026-09-09T04:35:10.657962" elapsed="0.035484"/>
+<status status="PASS" start="2026-09-09T04:42:44.229153" elapsed="0.006784"/>
 </kw>
 <kw name="Unsuccessful Login Should Be Confirmed">
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_ERROR}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.704997" elapsed="0.001892"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.281215" elapsed="0.000645"/>
 </kw>
 <kw name="Page Should Contain Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.709329" elapsed="0.000677"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.282709" elapsed="0.000423"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.703975" elapsed="0.006768"/>
+<status status="PASS" start="2026-09-09T04:42:44.280196" elapsed="0.003408"/>
 </kw>
 <kw name="Capture Login Screenshot" owner="LoginPage">
-<arg>unsuccessful-login</arg>
-<status status="NOT RUN" start="2026-09-09T04:35:10.738255" elapsed="0.000479"/>
+<arg>${TEST NAME}</arg>
+<status status="NOT RUN" start="2026-09-09T04:42:44.358248" elapsed="0.000547"/>
 </kw>
 <kw name="Ask To Continue With Google">
 <kw name="Get Value From User" owner="Dialogs">
 <var>${continue}</var>
 <arg>Login was unsuccessful. Continue with Google? (yes/no):</arg>
 <doc>Pauses execution and asks user to input a value.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.762475" elapsed="0.001005"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.437315" elapsed="0.000400"/>
 </kw>
 <kw name="Convert To Lower Case" owner="String">
 <var>${should_continue}</var>
 <arg>${continue}</arg>
 <doc>Converts string to lower case.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.766286" elapsed="0.001165"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.438411" elapsed="0.000375"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Continue With Google">
 <kw name="Go To" owner="SeleniumLibrary">
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.781604" elapsed="0.000777"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.443450" elapsed="0.000384"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.785146" elapsed="0.001538"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.444523" elapsed="0.000951"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.787490" elapsed="0.000396"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.446283" elapsed="0.000742"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
 <kw name="Wait Until Location Contains" owner="SeleniumLibrary">
 <arg>accounts.google.com</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.792214" elapsed="0.000708"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.449160" elapsed="0.000866"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.788655" elapsed="0.004668"/>
+<status status="PASS" start="2026-09-09T04:42:44.448030" elapsed="0.002388"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.777013" elapsed="0.018316"/>
+<status status="PASS" start="2026-09-09T04:42:44.442281" elapsed="0.008420"/>
 </kw>
 <arg>'${should_continue}' == 'yes'</arg>
 <arg>Continue With Google</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.768867" elapsed="0.026778"/>
+<status status="PASS" start="2026-09-09T04:42:44.439558" elapsed="0.011381"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.759044" elapsed="0.037419"/>
+<status status="PASS" start="2026-09-09T04:42:44.435020" elapsed="0.016242"/>
 </kw>
 <kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.798723" elapsed="0.000290"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.487596" elapsed="0.000297"/>
 </kw>
 <doc>Test that invalid credentials show an error and do not log the user in.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.511094" elapsed="0.289153"/>
+<status status="PASS" start="2026-09-09T04:42:43.980318" elapsed="0.568778"/>
 </test>
 <test id="s1-t3" name="Continue With Google Scenario" line="37">
 <kw name="Open Browser To Login Page" type="SETUP">
@@ -239,54 +239,54 @@
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.810729" elapsed="0.000374"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.864918" elapsed="0.000689"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.811649" elapsed="0.000190"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.866644" elapsed="0.000362"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.812302" elapsed="0.000535"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.867776" elapsed="0.000707"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.809682" elapsed="0.003487"/>
+<status status="PASS" start="2026-09-09T04:42:44.862871" elapsed="0.006015"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.816529" elapsed="0.000304"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.901233" elapsed="0.000648"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.818313" elapsed="0.000566"/>
+<status status="NOT RUN" start="2026-09-09T04:42:44.991791" elapsed="0.000726"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.821678" elapsed="0.000435"/>
+<status status="NOT RUN" start="2026-09-09T04:42:45.042935" elapsed="0.000395"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
 <kw name="Wait Until Location Contains" owner="SeleniumLibrary">
 <arg>accounts.google.com</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.829867" elapsed="0.000635"/>
+<status status="NOT RUN" start="2026-09-09T04:42:45.097136" elapsed="0.000639"/>
 </kw>
-<status status="PASS" start="2026-09-09T04:35:10.826499" elapsed="0.004621"/>
+<status status="PASS" start="2026-09-09T04:42:45.095936" elapsed="0.002160"/>
 </kw>
 <kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="NOT RUN" start="2026-09-09T04:35:10.835527" elapsed="0.000362"/>
+<status status="NOT RUN" start="2026-09-09T04:42:45.140265" elapsed="0.000303"/>
 </kw>
 <doc>Test that the Google sign-in option starts the Google authentication flow.</doc>
-<status status="PASS" start="2026-09-09T04:35:10.806949" elapsed="0.030025"/>
+<status status="PASS" start="2026-09-09T04:42:44.803731" elapsed="0.376095"/>
 </test>
 <doc>A test suite for validating a website login page.</doc>
-<status status="PASS" start="2026-09-09T04:35:06.090659" elapsed="4.755287"/>
+<status status="PASS" start="2026-09-09T04:42:38.813918" elapsed="6.496649"/>
 </suite>
 <statistics>
 <total>

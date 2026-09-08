@@ -77,15 +77,14 @@ The current suite uses Edge and contains example credentials. Replace them befor
 The successful and unsuccessful login tests capture screenshots with:
 
 ```robot
-Capture Login Screenshot    successful-login
-Capture Login Screenshot    unsuccessful-login
+Capture Login Screenshot    ${TEST NAME}
 ```
 
-Each image is saved with a date and time suffix, for example:
+Robot Framework passes the current scenario name to the screenshot keyword. Spaces and unsafe filename characters are replaced with hyphens, and a date and time suffix is added. Examples:
 
 ```text
-Screenshot/successful-login_2026-09-09_14-30-05-PM.png
-Screenshot/unsuccessful-login_2026-09-09_14-30-05-PM.png
+Screenshot/Successful-Login-Scenario_2026-09-09_14-30-05-PM.png
+Screenshot/Unsuccessful-Login-Scenario_2026-09-09_14-30-05-PM.png
 ```
 
 `LoginPage.py` also captures a timestamped `Screenshot/login-failure_*.png` automatically when one of its custom waits times out.

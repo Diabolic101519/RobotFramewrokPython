@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -87,8 +88,9 @@ class LoginKeywords:
             raise RuntimeError("The login browser is not open")
         output_dir = Path("Screenshot")
         output_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = re.sub(r"[^A-Za-z0-9_-]+", "-", name).strip("-_") or "login-failure"
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%p")
-        driver.save_screenshot(str(output_dir / f"{name}_{timestamp}.png"))
+        driver.save_screenshot(str(output_dir / f"{safe_name}_{timestamp}.png"))
 
     @keyword("Close Login Browser")
     def close_login_browser(self):
