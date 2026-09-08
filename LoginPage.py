@@ -88,9 +88,15 @@ class LoginKeywords:
             raise RuntimeError("The login browser is not open")
         output_dir = Path("Screenshot")
         output_dir.mkdir(parents=True, exist_ok=True)
+        for default_screenshot in output_dir.glob("selenium-screenshot-*.png"):
+            default_screenshot.unlink()
         safe_name = re.sub(r"[^A-Za-z0-9_-]+", "-", name).strip("-_") or "login-failure"
+        for previous_screenshot in output_dir.glob(f"{safe_name}_*.png"):
+            previous_screenshot.unlink()
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%p")
-        driver.save_screenshot(str(output_dir / f"{safe_name}_{timestamp}.png"))
+        screenshot_path = output_dir / f"{safe_name}_{timestamp}.png"
+        driver.save_screenshot(str(screenshot_path))
+        return str(screenshot_path)
 
     @keyword("Close Login Browser")
     def close_login_browser(self):
