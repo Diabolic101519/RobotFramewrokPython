@@ -14,8 +14,8 @@ ${BROWSER}        edge
 ${USERNAME}       abc@gmail.com
 ${PASSWORD}       1232
 ${WRONG_PASSWORD}    definitely_wrong_password
-${GOOGLE_EMAIL}    DiabolicCryptuse@gmail.com
-${GOOGLE_PASSWORD}    **Neztan101519**
+${GOOGLE_EMAIL}    cbd@gmail.com
+${GOOGLE_PASSWORD}    12353
 ${SCREENSHOT_DIR}    Screenshot
 
 *** Test Cases ***

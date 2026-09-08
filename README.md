@@ -58,7 +58,7 @@ python -m pytest test_sample.py
 ```
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
-The suite contains 3 scenarios. The successful-login scenario is skipped during a real run until valid GitHub credentials are configured. The unsuccessful-login scenario can optionally continue into Google authentication, and the dedicated Google scenario runs the email, `Next`, password, and `Next` steps.
+The suite contains 3 scenarios. The successful-login scenario is skipped during a real run until valid GitHub credentials are configured. The unsuccessful-login scenario can optionally continue into Google authentication, and the dedicated Google scenario runs the email, `Next`, password, and `Next` steps. Browser sessions remain open between scenarios and are reused when the current page is not already the login URL.
 The pytest screenshot checks cover sanitized scenario names, timestamped filenames, same-scenario replacement, preservation of other scenarios, and removal of numbered Selenium screenshots.
 
 ## Configuration
@@ -74,7 +74,7 @@ Update the variables in `login_test.robot` for the target application and test d
 - `${SCREENSHOT_DIR}` - Shared directory for all Selenium and custom screenshots.
 Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `Locators.py`.
 
-The current suite uses Edge and contains example credentials. Replace them before using the repository for real testing. Do not commit real Gmail or GitHub credentials; use environment variables or a secrets manager instead.
+The current suite uses Edge and contains credentials in the Robot variables section for local testing. Replace them before using the repository for real testing, and do not commit real Gmail or GitHub credentials. Use environment variables or a secrets manager instead.
 
 `Open Browser To Login Page` reuses an already-open browser and navigates to `${LOGIN_URL}` only when the current page differs. The scenarios do not close the browser between tests.
 
@@ -94,7 +94,7 @@ Screenshot/Unsuccessful-Login-Scenario_2026-09-09_14-30-05-PM.png
 Screenshot/Continue-With-Google-Scenario_2026-09-09_14-30-05-PM.png
 ```
 
-`Capture Screenshot` saves directly to `${SCREENSHOT_DIR}` using the executed scenario name and timestamp. Before saving, it removes old `selenium-screenshot-*.png` files and older screenshots for the same scenario, so numbered fallback files such as `selenium-screenshot-6.png` are not retained. Each scenario keeps only its latest screenshot; screenshots from different scenarios remain together in the same folder. The unsuccessful-login scenario also verifies that its scenario-named screenshot exists.
+`Capture Screenshot` saves directly to `${SCREENSHOT_DIR}` using the executed scenario name and timestamp. Before saving, it removes old `selenium-screenshot-*.png` files and older screenshots for the same scenario, so numbered fallback files such as `selenium-screenshot-6.png` are not retained. Each scenario keeps only its latest screenshot; screenshots from different scenarios remain together in the same folder. The unsuccessful-login scenario also verifies both the scenario name and the existence of its screenshot file.
 
 The suite-level `Test Teardown` captures a scenario-named screenshot whenever a test fails before reaching its explicit capture step. This includes failures during the Google authentication flow.
 
