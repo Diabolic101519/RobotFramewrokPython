@@ -16,7 +16,12 @@ ${WRONG_PASSWORD}    definitely_wrong_password
 *** Test Cases ***
 Successful Login Scenario
     [Documentation]    Test that opens the browser, logs in, and verifies success.
+    [Setup]    Open Browser To Login Page
+    [Teardown]    Close All Browsers
     Skip    Configure valid GitHub credentials before running the successful-login scenario.
+    Submit Credentials    ${USERNAME}    ${PASSWORD}
+    Successful Login Should Be Confirmed
+    Capture Login Screenshot    successful-login
 
 Unsuccessful Login Scenario
     [Documentation]    Test that invalid credentials show an error and do not log the user in.

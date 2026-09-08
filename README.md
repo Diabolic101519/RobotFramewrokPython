@@ -1,6 +1,6 @@
 # RobotFramewrokPython
 
-Robot Framework browser tests for the GitHub login page, including successful login, failed login, Google authentication navigation, and failure screenshots.
+Robot Framework browser tests for the GitHub login page, including successful login, failed login, Google authentication navigation, and timestamped screenshots for both login outcomes.
 
 ## Project Structure
 
@@ -58,7 +58,7 @@ python -m pytest test_sample.py
 ```
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
-The current dry run contains 3 scenarios; the successful-login scenario is skipped until valid GitHub credentials are configured, while the unsuccessful-login and Google-flow scenarios run normally.
+The suite contains 3 scenarios. The successful-login scenario is skipped during a real run until valid GitHub credentials are configured, while the unsuccessful-login and Google-flow scenarios run normally.
 
 ## Configuration
 
@@ -74,15 +74,17 @@ The current suite uses Edge and contains example credentials. Replace them befor
 
 ## Screenshots
 
-The unsuccessful login test captures a screenshot with:
+The successful and unsuccessful login tests capture screenshots with:
 
 ```robot
+Capture Login Screenshot    successful-login
 Capture Login Screenshot    unsuccessful-login
 ```
 
-The image is saved with a date and time suffix, for example:
+Each image is saved with a date and time suffix, for example:
 
 ```text
+Screenshot/successful-login_2026-09-09_14-30-05-PM.png
 Screenshot/unsuccessful-login_2026-09-09_14-30-05-PM.png
 ```
 
