@@ -8,6 +8,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 - `test_sample.py` - Pytest sample scenarios covering arithmetic, string concatenation, and list operations.
 - `Locators.py` - External Robot Framework variable file containing label-based login page locators.
 - `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers and screenshot support.
+- `.venv/` - Workspace Python virtual environment containing the test dependencies.
 - `Screenshot/` - Generated screenshots. The directory is created automatically when a screenshot is captured.
 - `log.html`, `report.html`, `output.xml` - Robot Framework execution artifacts.
 
@@ -20,9 +21,11 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 - Selenium WebDriver
 - A supported browser: Chrome, Firefox, or Edge
 
-Install the Python dependencies with:
+Create and activate a virtual environment, then install the dependencies:
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install robotframework robotframework-seleniumlibrary selenium pytest
 ```
 
@@ -33,28 +36,29 @@ Selenium Manager normally downloads or locates the required browser driver autom
 From the repository directory:
 
 ```powershell
-robot login_test.robot
+python -m robot login_test.robot
 ```
 
 Run one test case:
 
 ```powershell
-robot --test "Unsuccessful Login Scenario" login_test.robot
+python -m robot --test "Unsuccessful Login Scenario" login_test.robot
 ```
 
 Validate the suite without opening a browser:
 
 ```powershell
-robot --dryrun login_test.robot
+python -m robot --dryrun login_test.robot
 ```
 
 Run the pytest sample scenarios:
 
 ```powershell
-pytest test_sample.py
+python -m pytest test_sample.py
 ```
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
+The current dry run contains 3 scenarios; the successful-login scenario is skipped until valid GitHub credentials are configured, while the unsuccessful-login and Google-flow scenarios run normally.
 
 ## Configuration
 
@@ -62,7 +66,7 @@ Update the variables in `login_test.robot` for the target application and test d
 
 - `${LOGIN_URL}` - Login page URL.
 - `${BROWSER}` - `chrome`, `firefox`, or `edge`.
-- `${USERNAME}` and `${PASSWORD}` - Credentials for the success scenario.
+- `${USERNAME}` and `${PASSWORD}` - Credentials for the success scenario. The sample values are placeholders.
 - `${WRONG_PASSWORD}` - Invalid password for the failure scenario.
 Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `Locators.py`.
 
