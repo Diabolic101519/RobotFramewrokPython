@@ -5,6 +5,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 ## Project Structure
 
 - `login_test.robot` - Robot Framework test suite and user-facing keywords.
+- `test_sample.py` - Pytest sample scenarios covering arithmetic, string concatenation, and list operations.
 - `Locators.py` - External Robot Framework variable file containing label-based login page locators.
 - `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers and screenshot support.
 - `Screenshot/` - Generated screenshots. The directory is created automatically when a screenshot is captured.
@@ -14,6 +15,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 
 - Python 3.10 or newer
 - Robot Framework
+- pytest
 - SeleniumLibrary
 - Selenium WebDriver
 - A supported browser: Chrome, Firefox, or Edge
@@ -21,7 +23,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 Install the Python dependencies with:
 
 ```powershell
-python -m pip install robotframework robotframework-seleniumlibrary selenium
+python -m pip install robotframework robotframework-seleniumlibrary selenium pytest
 ```
 
 Selenium Manager normally downloads or locates the required browser driver automatically. Make sure the selected browser is installed.
@@ -44,6 +46,12 @@ Validate the suite without opening a browser:
 
 ```powershell
 robot --dryrun login_test.robot
+```
+
+Run the pytest sample scenarios:
+
+```powershell
+pytest test_sample.py
 ```
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
