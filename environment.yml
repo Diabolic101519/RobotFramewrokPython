@@ -7,4 +7,6 @@ dependencies:
   - pip
   - pip:
     - robotframework
+    - robotframework-seleniumlibrary
+    - selenium
     - pytest
