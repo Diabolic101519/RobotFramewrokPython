@@ -58,7 +58,7 @@ python -m pytest test_sample.py
 ```
 
 Robot Framework writes the results to `output.xml`, `log.html`, and `report.html`.
-The suite contains 3 scenarios. The successful-login scenario is skipped during a real run until valid GitHub credentials are configured. The unsuccessful-login scenario can optionally continue into Google authentication, and the dedicated Google scenario runs the email, `Next`, password, and `Next` steps. Browser sessions remain open between scenarios and are reused when the current page is not already the login URL.
+The suite contains 3 scenarios. The successful-login scenario reads credentials from `LOGIN_USERNAME` and `LOGIN_PASSWORD` and is skipped with a clear message when they are not configured. The unsuccessful-login scenario can optionally continue into Google authentication, and the dedicated Google scenario runs the email, `Next`, password, and `Next` steps. Browser sessions remain open between scenarios and are reused when the current page is not already the login URL.
 The pytest screenshot checks cover sanitized scenario names, timestamped filenames, same-scenario replacement, preservation of other scenarios, and removal of numbered Selenium screenshots.
 
 ## Configuration
@@ -67,7 +67,7 @@ Update the variables in `login_test.robot` for the target application and test d
 
 - `${LOGIN_URL}` - Login page URL.
 - `${BROWSER}` - `chrome`, `firefox`, or `edge`.
-- `${USERNAME}` and `${PASSWORD}` - Credentials for the success scenario. The sample values are placeholders.
+- `LOGIN_USERNAME` and `LOGIN_PASSWORD` - Environment variables containing valid GitHub credentials for the success scenario.
 - `${WRONG_PASSWORD}` - Invalid password for the failure scenario.
 - `${GOOGLE_EMAIL}` - Gmail address used by the Google authentication flow.
 - `${GOOGLE_PASSWORD}` - Gmail password used by the Google authentication flow.
@@ -105,7 +105,15 @@ input[type='password']
 
 The same locator format can be passed to `Submit Login`, `Login Should Succeed`, and `Login Should Fail`. Keep locator values in `Locators.py` when they are shared across tests.
 
-The current suite uses Edge and contains credentials in the Robot variables section for local testing. Replace them before using the repository for real testing, and do not commit real Gmail or GitHub credentials. Use environment variables or a secrets manager instead.
+The current suite uses Edge by default. The successful-login credentials are read from environment variables, while the failure and Google-flow values in the Robot variables section are sample placeholders. Replace them before using the repository for real testing, and do not commit real Gmail or GitHub credentials. Use environment variables or a secrets manager instead.
+
+Configure the successful-login scenario in PowerShell without storing credentials in the suite:
+
+```powershell
+$env:LOGIN_USERNAME = "your-github-username-or-email"
+$env:LOGIN_PASSWORD = "your-github-password"
+python -m robot --test "Successful Login Scenario" login_test.robot
+```
 
 `Open Browser To Login Page` reuses an already-open browser and navigates to `${LOGIN_URL}` only when the current page differs. The scenarios do not close the browser between tests.
 

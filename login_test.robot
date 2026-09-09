@@ -14,15 +14,14 @@ ${BROWSER}        edge
 ${USERNAME}       abc@gmail.com
 ${PASSWORD}       1232
 ${WRONG_PASSWORD}    definitely_wrong_password
-${GOOGLE_EMAIL}    cbd@gmail.com
-${GOOGLE_PASSWORD}    12353
+${GOOGLE_EMAIL}    dad@gmail.com
+${GOOGLE_PASSWORD}    12314
 ${SCREENSHOT_DIR}    Screenshot
 
 *** Test Cases ***
 Successful Login Scenario
     [Documentation]    Test that opens the browser, logs in, and verifies success.
-    [Setup]    Open Browser To Login Page
-    Skip    Configure valid GitHub credentials before running the successful-login scenario.
+    [Setup]    Prepare Successful Login
     Submit Credentials    ${USERNAME}    ${PASSWORD}
     Successful Login Should Be Confirmed
     Capture Screenshot    ${TEST NAME}
@@ -45,6 +44,16 @@ Continue With Google Scenario
 *** Keywords ***
 Capture Scenario Screenshot On Failure
     Run Keyword If Test Failed    Capture Screenshot    ${TEST NAME}
+
+Prepare Successful Login
+    ${username}=    Get Environment Variable    LOGIN_USERNAME    ${EMPTY}
+    ${password}=    Get Environment Variable    LOGIN_PASSWORD    ${EMPTY}
+    ${credentials_configured}=    Evaluate    bool($username and $password)
+    Run Keyword If    not ${credentials_configured}
+    ...    Skip    Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.
+    Set Test Variable    ${USERNAME}    ${username}
+    Set Test Variable    ${PASSWORD}    ${password}
+    Open Browser To Login Page
 
 Open Browser To Login Page
     ${browser_open}=    Run Keyword And Return Status    Get Location

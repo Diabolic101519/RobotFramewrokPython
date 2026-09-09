@@ -1,561 +1,713 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-09-09T22:51:32.134901" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-09-09T23:31:26.871736" rpa="false" schemaversion="5">
 <suite id="s1" name="Login Test" source="C:\Users\Administrator\Documents\GitHub\RobotFramewrokPython\login_test.robot">
 <test id="s1-t1" name="Successful Login Scenario" line="22">
-<kw name="Open Browser To Login Page" type="SETUP">
-<kw name="Run Keyword And Return Status" owner="BuiltIn">
-<kw name="Get Location" owner="SeleniumLibrary">
-<doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.026772" elapsed="0.000342"/>
+<kw name="Prepare Successful Login" type="SETUP">
+<kw name="Get Environment Variable" owner="OperatingSystem">
+<msg time="2026-09-09T23:31:31.146131" level="INFO">${username} = </msg>
+<var>${username}</var>
+<arg>LOGIN_USERNAME</arg>
+<arg>${EMPTY}</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<status status="PASS" start="2026-09-09T23:31:31.142599" elapsed="0.003772"/>
 </kw>
-<var>${browser_open}</var>
-<arg>Get Location</arg>
-<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.024794" elapsed="0.002702"/>
+<kw name="Get Environment Variable" owner="OperatingSystem">
+<msg time="2026-09-09T23:31:31.152368" level="INFO">${password} = </msg>
+<var>${password}</var>
+<arg>LOGIN_PASSWORD</arg>
+<arg>${EMPTY}</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<status status="PASS" start="2026-09-09T23:31:31.147366" elapsed="0.005242"/>
 </kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<arg>${LOGIN_URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.030389" elapsed="0.000484"/>
-</kw>
-<arg>not ${browser_open}</arg>
-<arg>Open Browser</arg>
-<arg>${LOGIN_URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.028370" elapsed="0.003380"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Use Existing Login Browser">
-<kw name="Get Location" owner="SeleniumLibrary">
-<var>${current_url}</var>
-<doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.039238" elapsed="0.000401"/>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-09-09T23:31:31.166531" level="INFO">${credentials_configured} = False</msg>
+<var>${credentials_configured}</var>
+<arg>bool($username and $password)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-09-09T23:31:31.153756" elapsed="0.013019"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Go To" owner="SeleniumLibrary">
-<arg>${LOGIN_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.042428" elapsed="0.000336"/>
-</kw>
-<arg>'${current_url}' != '${LOGIN_URL}'</arg>
-<arg>Go To</arg>
-<arg>${LOGIN_URL}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.040669" elapsed="0.002469"/>
-</kw>
-<status status="PASS" start="2026-09-09T22:51:36.037988" elapsed="0.005573"/>
-</kw>
-<arg>${browser_open}</arg>
-<arg>Use Existing Login Browser</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.033130" elapsed="0.010650"/>
-</kw>
-<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
-<arg>${SCREENSHOT_DIR}</arg>
-<doc>Sets the directory for captured screenshots.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.045140" elapsed="0.000412"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.046252" elapsed="0.000366"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
-<arg>timeout=20s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.049941" elapsed="0.001821"/>
-</kw>
-<status status="PASS" start="2026-09-09T22:51:36.019478" elapsed="0.032696"/>
-</kw>
 <kw name="Skip" owner="BuiltIn">
-<arg>Configure valid GitHub credentials before running the successful-login scenario.</arg>
+<msg time="2026-09-09T23:31:31.190739" level="SKIP">Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</msg>
+<arg>Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</arg>
 <doc>Skips the rest of the current test.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.055363" elapsed="0.001132"/>
+<status status="SKIP" start="2026-09-09T23:31:31.188870" elapsed="0.002594">Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</status>
 </kw>
-<kw name="Submit Credentials">
-<kw name="Input Text" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
-<arg>${user}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.059608" elapsed="0.000445"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_PASSWORD_FIELD}</arg>
-<arg>${pass}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.060635" elapsed="0.000445"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
-<arg>timeout=20s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.061838" elapsed="0.000668"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.063221" elapsed="0.000379"/>
-</kw>
-<arg>${USERNAME}</arg>
-<arg>${PASSWORD}</arg>
-<status status="PASS" start="2026-09-09T22:51:36.058577" elapsed="0.005379"/>
-</kw>
-<kw name="Successful Login Should Be Confirmed">
-<kw name="Run Keyword And Return Status" owner="BuiltIn">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>${LOGIN_PAGE_ERROR}</arg>
-<arg>timeout=10s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.070094" elapsed="0.000570"/>
-</kw>
-<var>${login_failed}</var>
-<arg>Wait Until Page Contains</arg>
-<arg>${LOGIN_PAGE_ERROR}</arg>
-<arg>timeout=10s</arg>
-<doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.068624" elapsed="0.002362"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Fail" owner="BuiltIn">
-<arg>Login failed: invalid username or password</arg>
-<doc>Fails the test with the given message and optionally alters its tags.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.074202" elapsed="0.000961"/>
-</kw>
-<arg>${login_failed}</arg>
-<arg>Fail</arg>
-<arg>Login failed: invalid username or password</arg>
+<arg>not ${credentials_configured}</arg>
+<arg>Skip</arg>
+<arg>Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.072047" elapsed="0.003383"/>
+<status status="SKIP" start="2026-09-09T23:31:31.176538" elapsed="0.015408">Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</status>
 </kw>
-<kw name="Wait Until Location Does Not Contain" owner="SeleniumLibrary">
-<arg>/login</arg>
-<arg>timeout=20s</arg>
-<doc>Waits until the current URL does not contains ``location``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.076034" elapsed="0.000521"/>
+<kw name="Set Test Variable" owner="BuiltIn">
+<arg>${USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" start="2026-09-09T23:31:31.192709" elapsed="0.000190"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.067073" elapsed="0.009815"/>
+<kw name="Set Test Variable" owner="BuiltIn">
+<arg>${PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" start="2026-09-09T23:31:31.194407" elapsed="0.000216"/>
 </kw>
-<kw name="Capture Screenshot" owner="LoginPage">
-<arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.078036" elapsed="0.000365"/>
+<kw name="Open Browser To Login Page">
+<status status="NOT RUN" start="2026-09-09T23:31:31.195561" elapsed="0.000204"/>
+</kw>
+<status status="SKIP" start="2026-09-09T23:31:31.137221" elapsed="0.059138">Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</status>
 </kw>
 <kw name="Capture Scenario Screenshot On Failure" type="TEARDOWN">
 <kw name="Run Keyword If Test Failed" owner="BuiltIn">
-<kw name="Capture Screenshot" owner="LoginPage">
-<arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.083048" elapsed="0.000408"/>
-</kw>
 <arg>Capture Screenshot</arg>
 <arg>${TEST NAME}</arg>
 <doc>Runs the given keyword with the given arguments, if the test failed.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.081311" elapsed="0.003838"/>
+<status status="PASS" start="2026-09-09T23:31:31.224443" elapsed="0.010256"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.079926" elapsed="0.005799"/>
+<status status="PASS" start="2026-09-09T23:31:31.219968" elapsed="0.015253"/>
 </kw>
 <doc>Test that opens the browser, logs in, and verifies success.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.011246" elapsed="0.075413"/>
+<status status="SKIP" start="2026-09-09T23:31:31.128802" elapsed="0.123680">Set LOGIN_USERNAME and LOGIN_PASSWORD before running the successful-login scenario.</status>
 </test>
-<test id="s1-t2" name="Unsuccessful Login Scenario" line="30">
+<test id="s1-t2" name="Unsuccessful Login Scenario" line="29">
 <kw name="Open Browser To Login Page" type="SETUP">
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:31.495051" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2026-09-09T23:31:31.495502" level="FAIL">No browser is open.</msg>
 <doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.097811" elapsed="0.000272"/>
+<status status="FAIL" start="2026-09-09T23:31:31.494401" elapsed="0.338439">No browser is open.</status>
 </kw>
+<msg time="2026-09-09T23:31:31.833735" level="INFO">${browser_open} = False</msg>
 <var>${browser_open}</var>
 <arg>Get Location</arg>
 <doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.096201" elapsed="0.002229"/>
+<status status="PASS" start="2026-09-09T23:31:31.491975" elapsed="0.341986"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:31.838727" level="INFO">Opening browser 'edge' to base url 'https://github.com/login'.</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.100610" elapsed="0.000766"/>
+<status status="PASS" start="2026-09-09T23:31:31.837434" elapsed="7.712203"/>
 </kw>
 <arg>not ${browser_open}</arg>
 <arg>Open Browser</arg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.099069" elapsed="0.002743"/>
+<status status="PASS" start="2026-09-09T23:31:31.834973" elapsed="7.715263"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Use Existing Login Browser">
-<kw name="Get Location" owner="SeleniumLibrary">
-<var>${current_url}</var>
-<doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.105008" elapsed="0.000230"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Go To" owner="SeleniumLibrary">
-<arg>${LOGIN_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.107064" elapsed="0.000389"/>
-</kw>
-<arg>'${current_url}' != '${LOGIN_URL}'</arg>
-<arg>Go To</arg>
-<arg>${LOGIN_URL}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.105770" elapsed="0.002050"/>
-</kw>
-<status status="PASS" start="2026-09-09T22:51:36.103923" elapsed="0.004308"/>
-</kw>
 <arg>${browser_open}</arg>
 <arg>Use Existing Login Browser</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.102505" elapsed="0.006030"/>
+<status status="PASS" start="2026-09-09T23:31:39.551112" elapsed="0.002695"/>
 </kw>
 <kw name="Set Screenshot Directory" owner="SeleniumLibrary">
 <arg>${SCREENSHOT_DIR}</arg>
 <doc>Sets the directory for captured screenshots.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.110332" elapsed="0.000710"/>
+<status status="PASS" start="2026-09-09T23:31:39.554800" elapsed="0.002525"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.112218" elapsed="0.000289"/>
+<status status="PASS" start="2026-09-09T23:31:39.564734" elapsed="1.788290"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.115080" elapsed="0.001939"/>
+<status status="PASS" start="2026-09-09T23:31:41.374940" elapsed="0.062079"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.094948" elapsed="0.022968"/>
+<status status="PASS" start="2026-09-09T23:31:31.490534" elapsed="9.947040"/>
 </kw>
 <kw name="Submit Credentials">
 <kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:41.455955" level="INFO">Typing text 'abc@gmail.com' into text field 'id:login_field'.</msg>
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>${user}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.122336" elapsed="0.000404"/>
+<status status="PASS" start="2026-09-09T23:31:41.454536" elapsed="1.690880"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:43.147885" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-09-09T23:31:43.501200" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${LOGIN_PAGE_PASSWORD_FIELD}</arg>
 <arg>${pass}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.123407" elapsed="0.000367"/>
+<status status="PASS" start="2026-09-09T23:31:43.146290" elapsed="1.915415"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.124371" elapsed="0.000738"/>
+<status status="PASS" start="2026-09-09T23:31:45.062455" elapsed="0.094514"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:45.158926" level="INFO">Clicking element 'css:button[type='submit'], input[type='submit'][value='Sign in']'.</msg>
 <arg>${LOGIN_PAGE_SUBMIT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.125783" elapsed="0.000303"/>
+<status status="PASS" start="2026-09-09T23:31:45.157717" elapsed="2.062119"/>
 </kw>
 <arg>${USERNAME}</arg>
 <arg>${WRONG_PASSWORD}</arg>
-<status status="PASS" start="2026-09-09T22:51:36.120517" elapsed="0.005832"/>
+<status status="PASS" start="2026-09-09T23:31:41.446725" elapsed="5.774086"/>
 </kw>
 <kw name="Unsuccessful Login Should Be Confirmed">
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_ERROR}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.131494" elapsed="0.000590"/>
+<status status="PASS" start="2026-09-09T23:31:47.241518" elapsed="0.108849"/>
 </kw>
 <kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:31:47.416708" level="INFO">Current page contains element 'id:login_field'.</msg>
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.133180" elapsed="0.000643"/>
+<status status="PASS" start="2026-09-09T23:31:47.351144" elapsed="0.065914"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.129906" elapsed="0.004626"/>
+<status status="PASS" start="2026-09-09T23:31:47.229317" elapsed="0.188168"/>
 </kw>
 <kw name="Capture Screenshot" owner="LoginPage">
+<msg time="2026-09-09T23:31:48.380711" level="INFO">${screenshot_path} = Screenshot\Unsuccessful-Login-Scenario_2026-09-09_23-31-47-PM.png</msg>
 <var>${screenshot_path}</var>
 <arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.136584" elapsed="0.000362"/>
+<status status="PASS" start="2026-09-09T23:31:47.420207" elapsed="0.960719"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${screenshot_path}</arg>
 <arg>Unsuccessful-Login-Scenario</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.140372" elapsed="0.002160"/>
+<status status="PASS" start="2026-09-09T23:31:48.403163" elapsed="0.006477"/>
 </kw>
 <kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2026-09-09T23:31:48.443675" level="INFO" html="true">File '&lt;a href="file://C:\Users\Administrator\Documents\GitHub\RobotFramewrokPython\Screenshot\Unsuccessful-Login-Scenario_2026-09-09_23-31-47-PM.png"&gt;C:\Users\Administrator\Documents\GitHub\RobotFramewrokPython\Screenshot\Unsuccessful-Login-Scenario_2026-09-09_23-31-47-PM.png&lt;/a&gt;' exists.</msg>
 <arg>${screenshot_path}</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.155050" elapsed="0.001312"/>
+<status status="PASS" start="2026-09-09T23:31:48.436223" elapsed="0.007837"/>
 </kw>
 <kw name="Ask To Continue With Google">
 <kw name="Get Value From User" owner="Dialogs">
+<msg time="2026-09-09T23:32:00.626244" level="INFO">${continue} = yes</msg>
 <var>${continue}</var>
 <arg>Login was unsuccessful. Continue with Google? (yes/no):</arg>
 <doc>Pauses execution and asks user to input a value.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.163634" elapsed="0.000410"/>
+<status status="PASS" start="2026-09-09T23:31:48.470491" elapsed="12.155973"/>
 </kw>
 <kw name="Convert To Lower Case" owner="String">
+<msg time="2026-09-09T23:32:00.628438" level="INFO">${should_continue} = yes</msg>
 <var>${should_continue}</var>
 <arg>${continue}</arg>
 <doc>Converts string to lower case.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.164634" elapsed="0.000296"/>
+<status status="PASS" start="2026-09-09T23:32:00.627327" elapsed="0.001291"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Continue With Google">
 <kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:00.639100" level="INFO">Opening url 'https://github.com/login'</msg>
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.169007" elapsed="0.000418"/>
+<status status="PASS" start="2026-09-09T23:32:00.638378" elapsed="0.622557"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.170494" elapsed="0.001202"/>
+<status status="PASS" start="2026-09-09T23:32:01.262066" elapsed="0.342284"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:01.606374" level="INFO">Clicking element 'xpath://button[contains(normalize-space(.), 'Continue with Google')] | //a[contains(normalize-space(.), 'Continue with Google')]'.</msg>
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.172364" elapsed="0.000303"/>
+<status status="PASS" start="2026-09-09T23:32:01.605236" elapsed="0.200318"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
 <kw name="Wait Until Location Contains" owner="SeleniumLibrary">
 <arg>accounts.google.com</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.176555" elapsed="0.001522"/>
+<status status="PASS" start="2026-09-09T23:32:01.808005" elapsed="4.212816"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.174904" elapsed="0.003541"/>
+<status status="PASS" start="2026-09-09T23:32:01.806519" elapsed="4.214808"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:06.050265" level="INFO">Typing text 'dad@gmail.com' into text field 'css:input[type='email'], input#identifierId'.</msg>
 <arg>${GOOGLE_EMAIL_FIELD}</arg>
 <arg>${GOOGLE_EMAIL}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.179024" elapsed="0.000521"/>
+<status status="PASS" start="2026-09-09T23:32:06.022049" elapsed="1.979765"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:08.004259" level="INFO">Clicking element 'xpath://button[.//span[normalize-space()='Next']] | //button[normalize-space()='Next']'.</msg>
 <arg>${GOOGLE_EMAIL_NEXT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.180223" elapsed="0.000457"/>
+<status status="PASS" start="2026-09-09T23:32:08.002898" elapsed="0.901799"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${GOOGLE_PASSWORD_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.181304" elapsed="0.000653"/>
+<status status="PASS" start="2026-09-09T23:32:08.905762" elapsed="0.074177"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:08.982102" level="INFO">Typing password into text field 'css:input[type='password']'.</msg>
+<msg time="2026-09-09T23:32:09.616930" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshot/selenium-screenshot-1.png"&gt;&lt;img src="Screenshot/selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-09T23:32:09.617841" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</msg>
 <arg>${GOOGLE_PASSWORD_FIELD}</arg>
 <arg>${GOOGLE_PASSWORD}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.183120" elapsed="0.001446"/>
+<status status="FAIL" start="2026-09-09T23:32:08.980707" elapsed="1.054928">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${GOOGLE_PASSWORD_NEXT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.185926" elapsed="0.000419"/>
+<status status="NOT RUN" start="2026-09-09T23:32:10.036880" elapsed="0.002020"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
-<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
-<arg>accounts.google.com</arg>
-<arg>timeout=20s</arg>
-<doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.188430" elapsed="0.000750"/>
-</kw>
-<status status="PASS" start="2026-09-09T22:51:36.187177" elapsed="0.002409"/>
+<status status="NOT RUN" start="2026-09-09T23:32:10.040419" elapsed="0.000278"/>
 </kw>
 <kw name="Capture Screenshot" owner="LoginPage">
 <arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.190092" elapsed="0.000300"/>
+<status status="NOT RUN" start="2026-09-09T23:32:10.042434" elapsed="0.000218"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.167190" elapsed="0.023504"/>
+<status status="FAIL" start="2026-09-09T23:32:00.635886" elapsed="9.407425">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
 <arg>'${should_continue}' == 'yes'</arg>
 <arg>Continue With Google</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.165490" elapsed="0.025549"/>
+<status status="FAIL" start="2026-09-09T23:32:00.629308" elapsed="9.415232">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.161408" elapsed="0.029932"/>
+<status status="FAIL" start="2026-09-09T23:31:48.457641" elapsed="21.587874">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
 <kw name="Capture Scenario Screenshot On Failure" type="TEARDOWN">
 <kw name="Run Keyword If Test Failed" owner="BuiltIn">
 <kw name="Capture Screenshot" owner="LoginPage">
 <arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.196253" elapsed="0.000303"/>
+<status status="PASS" start="2026-09-09T23:32:10.052852" elapsed="0.353288"/>
 </kw>
 <arg>Capture Screenshot</arg>
 <arg>${TEST NAME}</arg>
 <doc>Runs the given keyword with the given arguments, if the test failed.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.194909" elapsed="0.001857"/>
+<status status="PASS" start="2026-09-09T23:32:10.050482" elapsed="0.356069"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.193678" elapsed="0.003357"/>
+<status status="PASS" start="2026-09-09T23:32:10.048913" elapsed="0.359660"/>
 </kw>
 <doc>Test that invalid credentials show an error and do not log the user in.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.090270" elapsed="0.107614"/>
+<status status="FAIL" start="2026-09-09T23:31:31.448467" elapsed="38.965927">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </test>
-<test id="s1-t3" name="Continue With Google Scenario" line="40">
+<test id="s1-t3" name="Continue With Google Scenario" line="39">
 <kw name="Open Browser To Login Page" type="SETUP">
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="Get Location" owner="SeleniumLibrary">
 <doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.225220" elapsed="0.001831"/>
+<status status="PASS" start="2026-09-09T23:32:10.434755" elapsed="0.050799"/>
 </kw>
+<msg time="2026-09-09T23:32:10.486153" level="INFO">${browser_open} = True</msg>
 <var>${browser_open}</var>
 <arg>Get Location</arg>
 <doc>Runs the specified keyword and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.219268" elapsed="0.008198"/>
+<status status="PASS" start="2026-09-09T23:32:10.432867" elapsed="0.053460"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<arg>${LOGIN_URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.230147" elapsed="0.000671"/>
-</kw>
 <arg>not ${browser_open}</arg>
 <arg>Open Browser</arg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.228230" elapsed="0.003194"/>
+<status status="PASS" start="2026-09-09T23:32:10.487005" elapsed="0.002433"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Use Existing Login Browser">
 <kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:10.545403" level="INFO">${current_url} = https://accounts.google.com/v3/signin/rejected?app_domain=https%3A%2F%2Fgithub.com&amp;client_id=1078992815106-brpsupgvhheqg35tupphbh0qk9c32nq8.apps.googleusercontent.com&amp;code_challenge=ctK-wPiF4cWdfqyv0Y...</msg>
 <var>${current_url}</var>
 <doc>Returns the current browser window URL.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.236611" elapsed="0.000265"/>
+<status status="PASS" start="2026-09-09T23:32:10.494306" elapsed="0.051384"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:10.549969" level="INFO">Opening url 'https://github.com/login'</msg>
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.239922" elapsed="0.000345"/>
+<status status="PASS" start="2026-09-09T23:32:10.548909" elapsed="2.168622"/>
 </kw>
 <arg>'${current_url}' != '${LOGIN_URL}'</arg>
 <arg>Go To</arg>
 <arg>${LOGIN_URL}</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.237886" elapsed="0.002672"/>
+<status status="PASS" start="2026-09-09T23:32:10.546434" elapsed="2.171720"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.235309" elapsed="0.006024"/>
+<status status="PASS" start="2026-09-09T23:32:10.492907" elapsed="2.226999"/>
 </kw>
 <arg>${browser_open}</arg>
 <arg>Use Existing Login Browser</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.232171" elapsed="0.009436"/>
+<status status="PASS" start="2026-09-09T23:32:10.490161" elapsed="2.230424"/>
 </kw>
 <kw name="Set Screenshot Directory" owner="SeleniumLibrary">
 <arg>${SCREENSHOT_DIR}</arg>
 <doc>Sets the directory for captured screenshots.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.242262" elapsed="0.000455"/>
+<status status="PASS" start="2026-09-09T23:32:12.741046" elapsed="0.003110"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.243440" elapsed="0.000268"/>
+<status status="PASS" start="2026-09-09T23:32:12.760691" elapsed="0.116097"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_USERNAME_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.244562" elapsed="0.000623"/>
+<status status="PASS" start="2026-09-09T23:32:12.877511" elapsed="0.094147"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.218170" elapsed="0.027323"/>
+<status status="PASS" start="2026-09-09T23:32:10.431345" elapsed="2.541180"/>
 </kw>
 <kw name="Continue With Google">
 <kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:12.982213" level="INFO">Opening url 'https://github.com/login'</msg>
 <arg>${LOGIN_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.247918" elapsed="0.000264"/>
+<status status="PASS" start="2026-09-09T23:32:12.981411" elapsed="0.772208"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.248752" elapsed="0.000643"/>
+<status status="PASS" start="2026-09-09T23:32:13.754390" elapsed="0.326190"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:14.082541" level="INFO">Clicking element 'xpath://button[contains(normalize-space(.), 'Continue with Google')] | //a[contains(normalize-space(.), 'Continue with Google')]'.</msg>
 <arg>${LOGIN_PAGE_GOOGLE_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.250495" elapsed="0.001231"/>
+<status status="PASS" start="2026-09-09T23:32:14.081352" elapsed="4.315597"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
 <kw name="Wait Until Location Contains" owner="SeleniumLibrary">
 <arg>accounts.google.com</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.256441" elapsed="0.002043"/>
+<status status="PASS" start="2026-09-09T23:32:18.399284" elapsed="0.157628"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.252842" elapsed="0.006097"/>
+<status status="PASS" start="2026-09-09T23:32:18.397730" elapsed="0.159655"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:18.559705" level="INFO">Typing text 'dad@gmail.com' into text field 'css:input[type='email'], input#identifierId'.</msg>
 <arg>${GOOGLE_EMAIL_FIELD}</arg>
 <arg>${GOOGLE_EMAIL}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.259839" elapsed="0.001033"/>
+<status status="PASS" start="2026-09-09T23:32:18.558095" elapsed="0.677035"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:19.237129" level="INFO">Clicking element 'xpath://button[.//span[normalize-space()='Next']] | //button[normalize-space()='Next']'.</msg>
 <arg>${GOOGLE_EMAIL_NEXT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.261680" elapsed="0.000352"/>
+<status status="PASS" start="2026-09-09T23:32:19.235900" elapsed="0.636213"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>${GOOGLE_PASSWORD_FIELD}</arg>
 <arg>timeout=20s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.262582" elapsed="0.000629"/>
+<status status="PASS" start="2026-09-09T23:32:19.872902" elapsed="0.039531"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-09-09T23:32:19.914680" level="INFO">Typing password into text field 'css:input[type='password']'.</msg>
+<msg time="2026-09-09T23:32:20.406840" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Screenshot/selenium-screenshot-1.png"&gt;&lt;img src="Screenshot/selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-09-09T23:32:20.407448" level="FAIL">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</msg>
 <arg>${GOOGLE_PASSWORD_FIELD}</arg>
 <arg>${GOOGLE_PASSWORD}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.263910" elapsed="0.000394"/>
+<status status="FAIL" start="2026-09-09T23:32:19.913218" elapsed="0.508381">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
 <arg>${GOOGLE_PASSWORD_NEXT_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.265008" elapsed="0.000346"/>
+<status status="NOT RUN" start="2026-09-09T23:32:20.422379" elapsed="0.000180"/>
 </kw>
 <kw name="Google Authentication Page Should Be Open">
-<kw name="Wait Until Location Contains" owner="SeleniumLibrary">
-<arg>accounts.google.com</arg>
-<arg>timeout=20s</arg>
-<doc>Waits until the current URL contains ``expected``.</doc>
-<status status="NOT RUN" start="2026-09-09T22:51:36.267018" elapsed="0.001048"/>
-</kw>
-<status status="PASS" start="2026-09-09T22:51:36.265979" elapsed="0.002624"/>
+<status status="NOT RUN" start="2026-09-09T23:32:20.423170" elapsed="0.000210"/>
 </kw>
 <kw name="Capture Screenshot" owner="LoginPage">
 <arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.271378" elapsed="0.000600"/>
+<status status="NOT RUN" start="2026-09-09T23:32:20.423838" elapsed="0.000137"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.246960" elapsed="0.028516"/>
+<status status="FAIL" start="2026-09-09T23:32:12.975200" elapsed="7.449348">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </kw>
 <kw name="Capture Scenario Screenshot On Failure" type="TEARDOWN">
 <kw name="Run Keyword If Test Failed" owner="BuiltIn">
 <kw name="Capture Screenshot" owner="LoginPage">
 <arg>${TEST NAME}</arg>
-<status status="NOT RUN" start="2026-09-09T22:51:36.282309" elapsed="0.000497"/>
+<status status="PASS" start="2026-09-09T23:32:20.431202" elapsed="0.350597"/>
 </kw>
 <arg>Capture Screenshot</arg>
 <arg>${TEST NAME}</arg>
 <doc>Runs the given keyword with the given arguments, if the test failed.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.280237" elapsed="0.002910"/>
+<status status="PASS" start="2026-09-09T23:32:20.429637" elapsed="0.353050"/>
 </kw>
-<status status="PASS" start="2026-09-09T22:51:36.277778" elapsed="0.005703"/>
+<status status="PASS" start="2026-09-09T23:32:20.426489" elapsed="0.356998"/>
 </kw>
 <doc>Test that the Google sign-in option starts the Google authentication flow.</doc>
-<status status="PASS" start="2026-09-09T22:51:36.205941" elapsed="0.079195"/>
+<status status="FAIL" start="2026-09-09T23:32:10.423188" elapsed="10.364621">ElementNotInteractableException: Message: element not interactable
+  (Session info: MicrosoftEdge=152.0.4191.66); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff781a6f4d5+4ab5]
+	msedgedriver!(No symbol) [0x7ff7819c5024]
+	msedgedriver!(No symbol) [0x7ff781764ebe]
+	msedgedriver!(No symbol) [0x7ff7817a8234]
+	msedgedriver!(No symbol) [0x7ff7817cfdaa]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817a60dd]
+	msedgedriver!(No symbol) [0x7ff7817a61d7]
+	msedgedriver!(No symbol) [0x7ff7817eb788]
+	msedgedriver!(No symbol) [0x7ff7817a5a1c]
+	msedgedriver!(No symbol) [0x7ff7817a4cb4]
+	msedgedriver!(No symbol) [0x7ff7817a5843]
+	msedgedriver!(No symbol) [0x7ff7818d13cb]
+	msedgedriver!(No symbol) [0x7ff7818e27a4]
+	msedgedriver!GetHandleVerifier [0x7ff781b17195+ac775]
+	msedgedriver!GetHandleVerifier [0x7ff781b1d2b1+b2891]
+	msedgedriver!(No symbol) [0x7ff7819d0876]
+	msedgedriver!(No symbol) [0x7ff7819cb364]
+	msedgedriver!(No symbol) [0x7ff7819cb485]
+	msedgedriver!(No symbol) [0x7ff7819bd018]
+	KERNEL32!BaseThreadInitThunk [0x7fff2f3dcd87+17]
+	ntdll!RtlUserThreadStart [0x7fff3160caec+2c]
+</status>
 </test>
 <doc>A test suite for validating a website login page.</doc>
-<status status="PASS" start="2026-09-09T22:51:32.147043" elapsed="4.144976"/>
+<status status="FAIL" start="2026-09-09T23:31:26.885038" elapsed="53.907046"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="2" skip="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Login Test" id="s1" pass="3" fail="0" skip="0">Login Test</stat>
+<stat name="Login Test" id="s1" pass="0" fail="2" skip="1">Login Test</stat>
 </suite>
 </statistics>
 <errors>
