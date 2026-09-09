@@ -7,7 +7,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 - `login_test.robot` - Robot Framework test suite and user-facing keywords.
 - `test_sample.py` - Pytest coverage for scenario-based screenshot naming, cleanup, and retention without opening a browser.
 - `Locators.py` - External Robot Framework variable file containing label-based login page locators.
-- `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers and screenshot support.
+- `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers, dynamic locator support, and screenshot support.
 - `.venv/` - Workspace Python virtual environment containing the test dependencies.
 - `Screenshot/` - Central directory for SeleniumLibrary and custom login screenshots. It is created automatically when a screenshot is captured.
 - `log.html`, `report.html`, `output.xml` - Robot Framework execution artifacts.
@@ -73,6 +73,28 @@ Update the variables in `login_test.robot` for the target application and test d
 - `${GOOGLE_PASSWORD}` - Gmail password used by the Google authentication flow.
 - `${SCREENSHOT_DIR}` - Shared directory for all Selenium and custom screenshots.
 Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `Locators.py`.
+
+### Locator Syntax
+
+The custom keywords in `LoginPage.py` accept SeleniumLibrary-style locator prefixes. Use the prefix that matches the locator strategy:
+
+```robot
+xpath://input[@id='login_field']
+id:login_field
+name:username
+css:input[type='email']
+class:login-button
+tag:button
+```
+
+Unprefixed values are treated as CSS selectors for backward compatibility:
+
+```robot
+#login_field
+input[type='password']
+```
+
+The same locator format can be passed to `Submit Login`, `Login Should Succeed`, and `Login Should Fail`. Keep locator values in `Locators.py` when they are shared across tests.
 
 The current suite uses Edge and contains credentials in the Robot variables section for local testing. Replace them before using the repository for real testing, and do not commit real Gmail or GitHub credentials. Use environment variables or a secrets manager instead.
 

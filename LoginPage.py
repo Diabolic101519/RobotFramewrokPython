@@ -109,8 +109,34 @@ class LoginKeywords:
         if self.driver is None:
             raise RuntimeError("The login browser is not open")
         return self.wait.until(
-            expected.presence_of_element_located((By.CSS_SELECTOR, selector))
+            expected.presence_of_element_located(self._locator(selector))
         )
+
+    @staticmethod
+    def _locator(selector: str):
+        """Convert a SeleniumLibrary-style locator into a Selenium locator."""
+        if not selector or not selector.strip():
+            raise ValueError("A locator is required")
+
+        prefix, separator, value = selector.partition(":")
+        locator_types = {
+            "css": By.CSS_SELECTOR,
+            "id": By.ID,
+            "name": By.NAME,
+            "xpath": By.XPATH,
+            "class": By.CLASS_NAME,
+            "class_name": By.CLASS_NAME,
+            "tag": By.TAG_NAME,
+            "tag_name": By.TAG_NAME,
+        }
+
+        if separator and prefix.lower() in locator_types:
+            if not value.strip():
+                raise ValueError(f"Locator value is missing: {selector}")
+            return locator_types[prefix.lower()], value.strip()
+
+        # Keep unprefixed selectors compatible with the existing CSS-based API.
+        return By.CSS_SELECTOR, selector.strip()
 
     @staticmethod
     def _create_driver():
@@ -143,7 +169,7 @@ class LoginKeywords:
 
     def _wait_for(self, selector: str):
         try:
-            self.wait.until(expected.visibility_of_element_located((By.CSS_SELECTOR, selector)))
+            self.wait.until(expected.visibility_of_element_located(self._locator(selector)))
         except TimeoutException as error:
             self.capture_login_screenshot()
             raise AssertionError(f"Expected login state was not visible: {selector}") from error
