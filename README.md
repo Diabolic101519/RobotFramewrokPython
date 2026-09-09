@@ -6,7 +6,7 @@ Robot Framework browser tests for the GitHub login page, including successful lo
 
 - `login_test.robot` - Robot Framework test suite and user-facing keywords.
 - `test_sample.py` - Pytest coverage for scenario-based screenshot naming, cleanup, and retention without opening a browser.
-- `Locators.py` - External Robot Framework variable file containing label-based login page locators.
+- `Locators.py` - External Robot Framework variable file containing mixed XPath, ID, and CSS login page locators.
 - `LoginPage.py` - Custom Robot Framework library with Selenium-based login helpers, dynamic locator support, and screenshot support.
 - `.venv/` - Workspace Python virtual environment containing the test dependencies.
 - `Screenshot/` - Central directory for SeleniumLibrary and custom login screenshots. It is created automatically when a screenshot is captured.
@@ -73,6 +73,15 @@ Update the variables in `login_test.robot` for the target application and test d
 - `${GOOGLE_PASSWORD}` - Gmail password used by the Google authentication flow.
 - `${SCREENSHOT_DIR}` - Shared directory for all Selenium and custom screenshots.
 Page locator variables such as `${LOGIN_PAGE_USERNAME_FIELD}`, `${LOGIN_PAGE_PASSWORD_FIELD}`, and `${LOGIN_PAGE_SUBMIT_BUTTON}` are maintained in `Locators.py`.
+
+The current locator file uses the most stable strategy available for each element:
+
+```python
+LOGIN_PAGE_USERNAME_FIELD = "id:login_field"
+LOGIN_PAGE_PASSWORD_FIELD = "id:password"
+LOGIN_PAGE_SUBMIT_BUTTON = "css:button[type='submit'], input[type='submit'][value='Sign in']"
+LOGIN_PAGE_GOOGLE_BUTTON = "xpath://button[contains(normalize-space(.), 'Continue with Google')] | //a[contains(normalize-space(.), 'Continue with Google')]"
+```
 
 ### Locator Syntax
 
